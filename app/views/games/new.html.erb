@@ -1,0 +1,16 @@
+<div class="p-4">
+  <h1>New game</h1>
+  <ul class="list-group list-group-horizontal mt-4 d-flex">
+    <% @grid.each do |letter| %>
+      <li class="btn btn-primary me-4 fs-5 fw-bold" style="width: 48px"><%=letter%></li>
+    <% end %>
+  </ul>
+
+  <p class="mt-4">What is the longest word you can find?</p>
+  <form action="/score" method="post" class="form-group row" data-turbo="false">
+    <input type="text" name="word" placeholder="Enter your word here" class="col-9">
+    <input type="submit" value="Play" name="grid" class="btn btn-primary col-3"">
+    <%= hidden_field_tag :grid, @grid %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</div>
